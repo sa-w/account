@@ -5,38 +5,58 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { yupResolver } from '@hookform/resolvers/yup';
+import loginSchema from '../schema/loginSchema';
 
-type Inputs = {
-    example: string,
-    exampleRequired: string,
+type FormData = {
+    email: string,
+    password: string,
 };
+
+const schema = loginSchema
 
 export default function Login() {
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
-    const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
-
-    console.log(watch("example"))
+    const { register, setValue, handleSubmit, formState: { errors } } = useForm<FormData>({
+        mode: 'onChange',
+        resolver: yupResolver(schema)
+    });
+    const onSubmit = handleSubmit(data => console.log(data));
+    
 
     return (
         <Container>
             <Row>
-                <Col style={{ width: '50em'}}>
+                <Col >
+
+                    <div className='mb-3' >Please login to continue</div>
 
                     <Form>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <FloatingLabel controlId="floatingInputGrid" label="Email address">
-                            <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Group className="mb-4" controlId="formBasicEmail">
+                            <FloatingLabel controlId="floatingInputGrid" label="Email address">
+
+                                <Form.Control {...register("email")} type="email" placeholder="Enter email" />
+
+                                <p className='error'>{errors.email?.message}</p>
+
                             </FloatingLabel>
                         </Form.Group>
 
-                        <Form.Group className="mb-3"  controlId="formBasicPassword">
-                        <FloatingLabel controlId="floatingInputGrid" label="Password">
-                            
-                            <Form.Control type="password" placeholder="Password" />
+                        <Form.Group className="mb-4" controlId="formBasicPassword">
+                            <FloatingLabel controlId="floatingInputGrid" label="Password">
+
+                                <Form.Control {...register("password")} type="password" placeholder="Password" />
+
+                                <p className='error'>{errors.password?.message}</p>
+
                             </FloatingLabel>
                         </Form.Group>
-                        <Button variant="primary" type="submit">
+
+                        <Button className=" submitButton" variant="primary" type="submit" onClick={(e) => {
+                            e.preventDefault()
+                            onSubmit()
+                        
+                        }}>
                             Submit
                         </Button>
                     </Form>
