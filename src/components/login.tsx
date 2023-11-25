@@ -22,40 +22,29 @@ export default function Login() {
         resolver: yupResolver(schema)
     });
     const onSubmit = handleSubmit(data => console.log(data));
-    
 
     return (
-        <Container>
+        <Container className='bg-light p-3 rounded w-100'>
             <Row>
                 <Col >
 
                     <div className='mb-3' >Please login to continue</div>
-
                     <Form>
                         <Form.Group className="mb-4" controlId="formBasicEmail">
                             <FloatingLabel controlId="floatingInputGrid" label="Email address">
-
                                 <Form.Control {...register("email")} type="email" placeholder="Enter email" />
-
                                 <p className='error'>{errors.email?.message}</p>
-
                             </FloatingLabel>
                         </Form.Group>
-
                         <Form.Group className="mb-4" controlId="formBasicPassword">
                             <FloatingLabel controlId="floatingInputGrid" label="Password">
-
                                 <Form.Control {...register("password")} type="password" placeholder="Password" />
-
                                 <p className='error'>{errors.password?.message}</p>
-
                             </FloatingLabel>
                         </Form.Group>
-
                         <Button className=" submitButton" variant="primary" type="submit" onClick={(e) => {
                             e.preventDefault()
                             onSubmit()
-                        
                         }}>
                             Submit
                         </Button>
