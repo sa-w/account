@@ -44,7 +44,7 @@ body {
   box-shadow: 10px 10px 14px 1px rgba(00,00,00,0.2);
   letter-spacing: 0.094em;
   margin-bottom: 0;
-  background-color: rgb(5, 25, 55);
+  /*background-color: rgb(5, 25, 55);*/
   color: rgb(221, 221, 221);
 }
 
@@ -53,8 +53,18 @@ body {
 }
 
 .error {
-  color: white;
+  color: red;
   float: left;
+}
+
+.loginComponent{
+  height: auto;
+  width: 400px;
+  box-shadow: 10px 10px 14px 1px rgba(00,00,00,0.2);
+}
+
+.inputGroup{
+  box-shadow: 10px 10px 14px 1px rgba(00,00,00,0.2);
 }
 
 @media (prefers-color-scheme: light) {

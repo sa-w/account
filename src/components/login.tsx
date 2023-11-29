@@ -24,25 +24,34 @@ export default function Login() {
     const onSubmit = handleSubmit(data => console.log(data));
 
     return (
-        <Container className='bg-light p-3 rounded w-100'>
+        <Container className='loginComponent bg-light p-3 rounded '>
             <Row>
                 <Col >
 
-                    <div className='mb-3' >Please login to continue</div>
+                    <div className='mb-4' >Please login to continue</div>
                     <Form>
                         <Form.Group className="mb-4" controlId="formBasicEmail">
+
                             <FloatingLabel controlId="floatingInputGrid" label="Email address">
-                                <Form.Control {...register("email")} type="email" placeholder="Enter email" />
-                                <p className='error'>{errors.email?.message}</p>
+                                <Form.Control {...register("email")} className='inputGroup' type="email" placeholder="Enter email" />
+
                             </FloatingLabel>
+                            <Form.Text id="passwordHelpBlock" className="error">{errors.email?.message}</Form.Text>
+
                         </Form.Group>
-                        <Form.Group className="mb-4" controlId="formBasicPassword">
+                        
+
+                        <Form.Group className="mb-4 " controlId="formBasicPassword">
+
                             <FloatingLabel controlId="floatingInputGrid" label="Password">
-                                <Form.Control {...register("password")} type="password" placeholder="Password" />
-                                <p className='error'>{errors.password?.message}</p>
+                                <Form.Control {...register("password")} className='inputGroup' type="password" placeholder="Password" />
+                                
                             </FloatingLabel>
+                            <Form.Text id="passwordHelpBlock1" className="error" >{errors.password?.message}</Form.Text>
+
                         </Form.Group>
-                        <Button className=" submitButton" variant="primary" type="submit" onClick={(e) => {
+
+                        <Button className="submitButton mt-2" variant="secondary" type="submit" onClick={(e) => {
                             e.preventDefault()
                             onSubmit()
                         }}>
