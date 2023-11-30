@@ -1,3 +1,9 @@
 {
-    
+    "submit":"Submit",
+    "pleaseLoginToContinue":"Please login to continue",
+    "password":"password",
+    "emailAddress":"Email address",
+    "createAccount":"Create Account",
+    "resetPassword":"Reset Password",
+    "appName":"Account"
 }

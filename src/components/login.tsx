@@ -7,6 +7,9 @@ import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { yupResolver } from '@hookform/resolvers/yup';
 import loginSchema from '../schema/loginSchema';
+// the hoc
+import { withTranslation } from 'react-i18next';
+
 
 type FormData = {
     email: string,
@@ -15,7 +18,7 @@ type FormData = {
 
 const schema = loginSchema
 
-export default function Login() {
+export default withTranslation()( function Login({t}) {
 
     const { register, setValue, handleSubmit, formState: { errors } } = useForm<FormData>({
         mode: 'onChange',
@@ -28,7 +31,7 @@ export default function Login() {
             <Row>
                 <Col >
 
-                    <div className='mb-4' >Please login to continue</div>
+                    <div className='mb-4' >{t('pleaseLoginToContinue')}</div>
                     <Form>
                         <Form.Group className="mb-4" controlId="formBasicEmail">
 
@@ -55,7 +58,7 @@ export default function Login() {
                             e.preventDefault()
                             onSubmit()
                         }}>
-                            Submit
+                            {t('submit')}
                         </Button>
                     </Form>
 
@@ -63,4 +66,4 @@ export default function Login() {
             </Row>
         </Container>
     );
-}
+});

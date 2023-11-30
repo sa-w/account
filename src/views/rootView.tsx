@@ -1,16 +1,15 @@
-import React from "react"
 import Login from "../components/login"
 import '../styles/login.css'
 
-export default function LoginView(){
+export default function LoginView() {
 
-    return(
+    return (
         <div  >
-        
-            <Login/>
+
+            <Login />
 
         </div>
-        
+
     )
 
 }
